@@ -6,3 +6,27 @@ create a new file called `vault.hclic` in the root directory containing your Vau
 ```bash
     kubectl create secret generic vault-license --from-file=./vault.hclic
 ```
+
+## Running
+To run use the following command
+```bash
+kubectl apply -f ./k8s-primary
+```
+
+Once started setup a port forward to the primary then init the cluster
+```bash
+kubectl port-forward vault-primary 8201:8201
+```
+
+```bash
+export VAULT_ADDR='http://127.0.0.1:8201'
+vault operator init
+```
+
+**KEEP THE DEATILS OF THE PREVIOUS OUTPUT**
+Then unseal the cluster
+```bash
+vault operator unseal
+vault operator unseal
+vault operator unseal
+```
