@@ -7,7 +7,7 @@ create a new file called `vault.hclic` in the root directory containing your Vau
     kubectl create secret generic vault-license --from-file=./vault.hclic
 ```
 
-## Running
+## Running Primary
 To run use the following command
 ```bash
 kubectl apply -f ./k8s-primary
@@ -30,3 +30,20 @@ vault operator unseal
 vault operator unseal
 vault operator unseal
 ```
+
+Next login to vault and activate the pr
+```bash
+vault login
+
+vault policy write superuser -<<EOF
+path "*" {
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+}
+EOF
+vault auth enable userpass
+vault write auth/userpass/users/tester password="changeme" policies="superuser"
+
+vault write -f sys/replication/performance/primary/enable
+```
+
+## Running Secondary as PR
