@@ -22,8 +22,8 @@ spec:
         memory: "2048Mi"
         cpu: "2"
     ports:
-    - containerPort: 8201
-      hostPort: 8201
+    - containerPort: 8202
+      hostPort: 8202
     volumeMounts:
     - name: config-volume
       mountPath: /vault/config/config.hcl

@@ -4,7 +4,7 @@ Testing out running K8s with DR and PR in K8s for testing
 ## Setup
 create a new file called `vault.hclic` in the root directory containing your Vault licence, then create a secret for this:
 ```bash
-    kubectl create secret generic vault-license --from-file=./vault.hclic
+kubectl create secret generic vault-license --from-file=./vault.hclic
 ```
 
 ## Running Primary
@@ -47,3 +47,12 @@ vault write -f sys/replication/performance/primary/enable
 ```
 
 ## Running Secondary as PR
+To run use the following command
+```bash
+kubectl apply -f ./k8s-secondary
+```
+
+Once started setup a port forward to the primary then init the secondary cluster
+```bash
+kubectl port-forward vault-primary 8202:8202
+```
