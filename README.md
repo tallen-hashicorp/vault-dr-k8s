@@ -79,5 +79,5 @@ Next login to vault and activate the dr and use the token from the previous comm
 ```bash
 vault login
 
-vault write sys/replication/performance/secondary/enable primary_api_addr= token=<token> 
+vault write sys/replication/performance/secondary/enable primary_api_addr=http://vault-primary-service:8201 token=<token> 
 ```

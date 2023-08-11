@@ -15,7 +15,7 @@ data:
     }
 
     api_addr = "http://127.0.0.1:8202"
-    cluster_addr = "https://127.0.0.1:8202"
+    cluster_addr = "http://vault-pr-service:8202"
     ui = true
     disable_mlock = true
 
