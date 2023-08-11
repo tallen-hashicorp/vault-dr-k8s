@@ -46,6 +46,11 @@ vault write auth/userpass/users/tester password="changeme" policies="superuser"
 vault write -f sys/replication/performance/primary/enable
 ```
 
+Fetching a Secondary Token **KEEP THE DEATILS OF THIS**
+```bash
+vault write sys/replication/performance/primary/secondary-token id=pr
+```
+
 ## Running Secondary as PR
 To run use the following command
 ```bash
@@ -54,5 +59,25 @@ kubectl apply -f ./k8s-secondary
 
 Once started setup a port forward to the primary then init the secondary cluster
 ```bash
-kubectl port-forward vault-primary 8202:8202
+kubectl port-forward vault-pr 8202:8202
+```
+
+```bash
+export VAULT_ADDR='http://127.0.0.1:8202'
+vault operator init
+```
+
+**KEEP THE DEATILS OF THE PREVIOUS OUTPUT**
+Then unseal the cluster
+```bash
+vault operator unseal
+vault operator unseal
+vault operator unseal
+```
+
+Next login to vault and activate the dr and use the token from the previous command
+```bash
+vault login
+
+vault write sys/replication/performance/secondary/enable primary_api_addr= token=<token> 
 ```
