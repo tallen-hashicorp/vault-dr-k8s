@@ -10,12 +10,12 @@ data:
     }
 
     listener "tcp" {
-      address     = "0.0.0.0:8202"
+      address     = "0.0.0.0:8203"
       tls_disable = "true"
     }
 
-    api_addr = "http://127.0.0.1:8202"
-    cluster_addr = "http://vault-pr-service:8202"
+    api_addr = "http://vault-pr-service:8203"
+    cluster_addr = "http://vault-pr-service-cluster:8204"
     ui = true
     disable_mlock = true
 

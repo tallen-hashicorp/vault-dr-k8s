@@ -24,7 +24,7 @@ spec:
         memory: "2048Mi"
         cpu: "2"
     ports:
-    - containerPort: 8202
+    - containerPort: 8203
     volumeMounts:
     - name: config-volume
       mountPath: /vault/config/config.hcl
@@ -53,5 +53,17 @@ spec:
     app: vault-pr
   ports:
     - protocol: TCP
-      port: 8202
-      targetPort: 8202
+      port: 8203
+      targetPort: 8203
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-pr-service-cluster
+spec:
+  selector:
+    app: vault-pr
+  ports:
+    - protocol: TCP
+      port: 8204
+      targetPort: 8204
