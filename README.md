@@ -81,3 +81,8 @@ vault login
 
 vault write sys/replication/performance/secondary/enable token=<token> 
 ```
+
+---
+# TODO
+* Create script to start
+* User local storage rather then tempoary
