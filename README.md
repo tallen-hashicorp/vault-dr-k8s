@@ -1,6 +1,14 @@
 # vault-dr-k8s
 Testing out running K8s with DR and PR in K8s for testing
 
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
+
 ## Setup
 create a new file called `vault.hclic` in the root directory containing your Vault licence, then create a secret for this:
 ```bash
