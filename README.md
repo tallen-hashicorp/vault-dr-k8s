@@ -82,7 +82,15 @@ vault login
 vault write sys/replication/performance/secondary/enable token=<token> 
 ```
 
----
-# TODO
-* Create script to start
-* User local storage rather then tempoary
+## Test login
+```bash
+vault login -method=userpass \
+    username=tester \
+    password=changeme
+```
+
+## Cleanup
+```
+kubectl delete -f k8s-secondary
+kubectl delete -f k8s-primary
+```

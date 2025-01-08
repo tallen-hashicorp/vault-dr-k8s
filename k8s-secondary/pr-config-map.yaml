@@ -20,3 +20,5 @@ data:
     disable_mlock = true
 
     license_path = "/vault/vault.hclic"
+
+    log_level = "trace"
