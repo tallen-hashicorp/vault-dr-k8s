@@ -90,7 +90,9 @@ vault login -method=userpass \
 ```
 
 ## Cleanup
-```
+```bash
 kubectl delete -f k8s-secondary
 kubectl delete -f k8s-primary
+
+kubectl delete secret vault-license
 ```
